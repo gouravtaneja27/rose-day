@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day Surprise 🌹</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #000;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .screen {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .btn {
+            background: #ff3d7f;
+            color: #fff;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 30px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        /* SCREEN 1 */
+        .screen-1 h1 {
+            color: #ff3d7f;
+            text-align: center;
+        }
+
+        .chat {
+            margin-top: 20px;
+            background: #222;
+            padding: 12px 18px;
+            border-radius: 20px;
+            color: #fff;
+        }
+
+        /* SCREEN 2 */
+        .screen-2 {
+            background: #ffd6e5;
+        }
+
+        .card {
+            background: #fff;
+            padding: 22px;
+            border-radius: 20px;
+            width: 280px;
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #ff3d7f;
+        }
+
+        /* HEARTS */
+        .heart {
+            position: absolute;
+            color: #ff3d7f;
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* SCREEN 3 */
+        .screen-3 {
+            background: #ffd6e5;
+            color: #ff3d7f;
+        }
+
+        /* SCREEN 4 MEMORIES */
+        .screen-4 {
+            background: #ffd6e5;
+            padding: 20px;
+            overflow-y: auto;
+            justify-content: flex-start;
+        }
+
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            max-width: 520px;
+            margin: 20px auto;
+        }
+
+        .memory {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .memory img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SCREEN 5 LETTER */
+        .screen-5 {
+            background: #ffd6e5;
+            padding: 20px;
+        }
+
+        .letter {
+            background: #fff;
+            padding: 26px;
+            border-radius: 22px;
+            max-width: 340px;
+            animation: open 1s ease;
+        }
+
+        @keyframes open {
+            from {
+                transform: scale(.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .letter p {
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* SCREEN 6 ROSES */
+        .screen-6 {
+            background: #ffd6e5;
+            color: #ff3d7f;
+        }
+
+        .roses {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .rose {
+            font-size: 60px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        .rose:hover {
+            transform: scale(1.2);
+        }
+
+        /* FINAL ANIMATION */
+        .final {
+            font-size: 80px;
+            animation: pop 1.5s infinite;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SCREEN 1 -->
+    <div class="screen screen-1" id="s1">
+        <h1>Pov :<br>It's Rose day<br>But instead of rose 🌹</h1>
+        <div class="chat">Happy rose day baby 🥺🌹🙈</div>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div class="screen screen-2 hidden" id="s2">
+        <div class="card">
+            <h2>Happy Rose Day Baby 🌹</h2>
+            <p>You are my favorite memory ❤️</p>
+            <button class="btn" onclick="to3()">Next</button>
+        </div>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div class="screen screen-3 hidden" id="s3">
+        <h2>Pick a Rose 🌹</h2>
+        <button class="btn" onclick="to4()">Open Surprise</button>
+    </div>
+
+    <!-- SCREEN 4 -->
+    <div class="screen screen-4 hidden" id="s4">
+        <h2>Our Memories 💖</h2>
+        <div class="memories">
+            <div class="memory"><img src="./IMG_8686.PNG"></div>
+            <div class="memory"><img src="./IMG_8872.jpg"></div>
+            <div class="memory"><img src="img3.jpg"></div>
+            <div class="memory"><img src="img4.jpg"></div>
+            <div class="memory"><img src="img5.jpg"></div>
+        </div>
+        <button class="btn" onclick="to5()">Next</button>
+    </div>
+
+    <!-- SCREEN 5 -->
+    <div class="screen screen-5 hidden" id="s5">
+        <div class="letter">
+            <h3 style="text-align:center;color:#ff3d7f">My Love 💌</h3>
+            <p>
+                You are the most beautiful part of my life.
+                Every memory with you is priceless.
+                I want to choose you again and again ❤️
+            </p>
+        </div>
+        <button class="btn" onclick="to6()">Next</button>
+    </div>
+
+    <!-- SCREEN 6 -->
+    <div class="screen screen-6 hidden" id="s6">
+        <h2>Pick 1 Rose 🌹</h2>
+        <div class="roses">
+            <div class="rose" onclick="final()">🌹</div>
+            <div class="rose" onclick="final()">🌹</div>
+            <div class="rose" onclick="final()">🌹</div>
+        </div>
+    </div>
+
+    <!-- FINAL -->
+    <div class="screen hidden" id="s7" style="background:#ffd6e5;color:#ff3d7f">
+        <div class="final">❤️🌹</div>
+        <h2>You picked my heart</h2>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            s1.classList.add("hidden");
+            s2.classList.remove("hidden");
+            hearts();
+        }, 4000);
+
+        function to3() { s2.classList.add("hidden"); s3.classList.remove("hidden"); }
+        function to4() { s3.classList.add("hidden"); s4.classList.remove("hidden"); }
+        function to5() { s4.classList.add("hidden"); s5.classList.remove("hidden"); }
+        function to6() { s5.classList.add("hidden"); s6.classList.remove("hidden"); }
+        function final() {
+            s6.classList.add("hidden");
+            s7.classList.remove("hidden");
+        }
+
+        function hearts() {
+            setInterval(() => {
+                let h = document.createElement("div");
+                h.className = "heart";
+                h.innerHTML = "❤";
+                h.style.left = Math.random() * 100 + "%";
+                h.style.fontSize = 12 + Math.random() * 20 + "px";
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 4000);
+            }, 300);
+        }
+    </script>
+
+</body>
+
+</html>
